@@ -1,1 +1,107 @@
-<h1>Here is where the AJAX pet adoption assignment will go! </h1>
+<!doctype html>
+<html>
+<head>
+ 
+   <meta name="robots" content="noindex,nofollow">
+   <title>AJAX Pet Starter</title>
+   <script src="https://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
+   <script type="text/javascript">
+       $("document").ready(function(){
+
+            //hiding the last two questions for right now
+            $("#pet_likes").hide();
+            $("#pet_eats").hide();
+
+            $("#pet_feels").click(function(e){
+                //alert("feels is clicked, my doki doki!");
+                $("#pet_likes").slideDown(200);
+            
+            });
+
+
+            $("#pet_likes").click(function(e){
+                //alert("feels is clicked, my doki doki!");
+                $("#pet_eats").slideDown(200);
+            
+            });
+
+
+           $('#myForm').submit(function(e){
+               //alert("hi!  I'm jQuery!");
+              
+               //here are the selections made by the users
+               let feels = $("input[name=feels]:checked").val();
+               let likes = $("input[name=likes]:checked").val();
+               let eats = $("input[name=eats]:checked").val();
+               let pet = ""; //will store our pet lol
+
+
+               //alert(eats);
+
+
+               if(feels == "fluffy" && likes =="petted" && eats == "carrots"){
+                    pet = "rabbit";
+               }
+
+               if(feels == "scaly" && likes =="ridden" && eats == "pets"){
+                    pet = "velociraptor";
+               }
+
+
+
+
+
+
+               // create text to tell user about pet lolol
+               let output = "";
+               output += `<p>Hello meet your new pet: ${pet}</p>`;
+               output += `<p>Your pet feels: ${feels}</p>`;
+               output += `<p>Your pet likes to be: ${likes}</p>`;
+               output += `<p>Your pet likes to eat: ${eats}</p>`;
+               $("#output").html(output);
+
+
+               //load pic of pet
+               $('#pet').load(`includes/content.html #${pet}`);
+               //$('#pet').load('includes/content.html #cute-kitten');
+
+
+               e.preventDefault();//no need to submit as you'll be doing AJAX on this page
+       
+           });
+       });
+   </script>
+</head>
+<body>
+<h2>AJAX Pet Starter</h2>
+<form id="myForm" name="myForm" action="form-handler.php" method="post">
+<p>Below is a starter page for the AJAX Pet Adoption Agency assignment.</p>
+   <div id="pet_feels">
+       <h3>Feels</h3>
+       <p>Please choose how you would like your pet to feel:</p>
+       <input type="radio" name="feels" value="fluffy" required ="required"> fluffy <br />
+       <input type="radio" name="feels" value="scaly" required ="required"> scaly <br />
+   </div>
+   <div id="pet_likes">
+       <h3>Likes</h3>
+       <p>Please tell us what your pet will like:</p>
+       <input type="radio" name="likes" value="petted" required ="required"> to be petted <br />
+       <input type="radio" name="likes" value="ridden" required ="required"> to be ridden <br />
+   </div>
+       <div id="pet_eats">
+       <h3>Eats</h3>
+       <p>Please tell us what your pet likes to eat:</p>
+       <input type="radio" name="eats" value="carrots" required ="required"> carrots <br />
+       <input type="radio" name="eats" value="pets" required ="required"> other people's pets <br />
+   </div>
+  <br>
+  <br>
+   <input type="submit" value="submit it!" />
+   <div id="pet">Pic of pet goes here senpai!</div>
+   <div id="output">Output goes here!</div>
+</form>
+</body>
+</html>
+ 
+ 
+ 
