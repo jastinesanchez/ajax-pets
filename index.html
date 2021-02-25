@@ -9,19 +9,19 @@
        $("document").ready(function(){
 
             //hiding the last two questions for right now
-            $("#pet_likes").hide();
-            $("#pet_eats").hide();
+            $("#starter_walks").hide();
+            $("#pet_looks").hide();
 
-            $("#pet_feels").click(function(e){
+            $("#starter_type").click(function(e){
                 //alert("feels is clicked, my doki doki!");
-                $("#pet_likes").slideDown(200);
+                $("#starter_walks").slideDown(200);
             
             });
 
 
-            $("#pet_likes").click(function(e){
+            $("#starter_walks").click(function(e){
                 //alert("feels is clicked, my doki doki!");
-                $("#pet_eats").slideDown(200);
+                $("#starter_looks").slideDown(200);
             
             });
 
@@ -30,21 +30,21 @@
                //alert("hi!  I'm jQuery!");
               
                //here are the selections made by the users
-               let feels = $("input[name=feels]:checked").val();
-               let likes = $("input[name=likes]:checked").val();
-               let eats = $("input[name=eats]:checked").val();
-               let pet = ""; //will store our pet lol
+               let type = $("input[name=type]:checked").val();
+               let walks = $("input[name=walks]:checked").val();
+               let looks = $("input[name=looks]:checked").val();
+               let starter = ""; //will store our pet lol
 
 
                //alert(eats);
 
 
-               if(feels == "fluffy" && likes =="petted" && eats == "carrots"){
-                    pet = "rabbit";
+               if(type == "fire" && walks =="2 legs" && looks == "cool"){
+                    starter = "scorbunny";
                }
 
-               if(feels == "scaly" && likes =="ridden" && eats == "pets"){
-                    pet = "velociraptor";
+               if(type == "fluffy" && walks =="petted" && looks == "carrots"){
+                    starter = "rabbit";
                }
 
 
@@ -54,15 +54,15 @@
 
                // create text to tell user about pet lolol
                let output = "";
-               output += `<p>Hello meet your new pet: ${pet}</p>`;
-               output += `<p>Your pet feels: ${feels}</p>`;
-               output += `<p>Your pet likes to be: ${likes}</p>`;
-               output += `<p>Your pet likes to eat: ${eats}</p>`;
+               output += `<p>Hello meet your new Starter: ${starter}</p>`;
+               output += `<p>Your Pokemon starter's type is: ${type}</p>`;
+               output += `<p>Your Pokemon starter walks on: ${walks}</p>`;
+               output += `<p>Your Pokemon starter looks: ${looks}</p>`;
                $("#output").html(output);
 
 
                //load pic of pet
-               $('#pet').load(`includes/content.html #${pet}`);
+               $('#starter').load(`includes/content.html #${starter}`);
                //$('#pet').load('includes/content.html #cute-kitten');
 
 
@@ -76,28 +76,31 @@
 <h2>AJAX Pet Starter</h2>
 <form id="myForm" name="myForm" action="form-handler.php" method="post">
 <p>Below is a starter page for the AJAX Pet Adoption Agency assignment.</p>
-   <div id="pet_feels">
-       <h3>Feels</h3>
-       <p>Please choose how you would like your pet to feel:</p>
-       <input type="radio" name="feels" value="fluffy" required ="required"> fluffy <br />
-       <input type="radio" name="feels" value="scaly" required ="required"> scaly <br />
+   <div id="starter_type">
+       <h3>Type</h3>
+       <p>What type do you want your Pokemon Starter to be?:</p>
+       <input type="radio" name="type" value="fire" required ="required"> fire <br />
+       <input type="radio" name="type" value="water" required ="required"> water <br />
+       <input type="radio" name="type" value="grass" required ="required"> grass <br />
    </div>
-   <div id="pet_likes">
-       <h3>Likes</h3>
-       <p>Please tell us what your pet will like:</p>
-       <input type="radio" name="likes" value="petted" required ="required"> to be petted <br />
-       <input type="radio" name="likes" value="ridden" required ="required"> to be ridden <br />
+   <div id="starter_walks">
+       <h3>Walks</h3>
+       <p>How do you want your Pokemon Starter to walk?:</p>
+       <input type="radio" name="walks" value="2 legs" required ="required"> 2 legs <br />
+       <input type="radio" name="walks" value="4 legs" required ="required"> 4 legs <br />
+       <input type="radio" name="walks" value="both" required ="required"> both 2 and 4 legs <br />
    </div>
-       <div id="pet_eats">
-       <h3>Eats</h3>
-       <p>Please tell us what your pet likes to eat:</p>
-       <input type="radio" name="eats" value="carrots" required ="required"> carrots <br />
-       <input type="radio" name="eats" value="pets" required ="required"> other people's pets <br />
+       <div id="starter_looks">
+       <h3>Looks</h3>
+       <p>Do you want your Pokemon to look:</p>
+       <input type="radio" name="looks" value="cool" required ="required"> cool <br />
+       <input type="radio" name="looks" value="cute" required ="required"> cute  <br />
+       <input type="radio" name="looks" value="creative" required ="required"> creative  <br />
    </div>
   <br>
   <br>
    <input type="submit" value="submit it!" />
-   <div id="pet">Pic of pet goes here senpai!</div>
+   <div id="starter">Pic of pet goes here senpai!</div>
    <div id="output">Output goes here!</div>
 </form>
 </body>
